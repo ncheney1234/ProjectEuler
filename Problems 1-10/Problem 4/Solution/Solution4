@@ -1,0 +1,28 @@
+#pragma once
+#include <iostream>
+#include <cmath>
+#include <ctime>
+#include "Problem4_header.h"
+using namespace std;
+int main() {
+	unsigned t0 = clock();
+	long long longest_palindrome = 0;
+	for (long long i = 100; i <= 999;i++) {
+		for (long long j = 100; j <= i; j++) {
+			if ((reverse(i*j)==i*j)&&(i*j>longest_palindrome)) {
+				
+				longest_palindrome = i * j;
+
+			}
+
+		}
+
+	}
+	
+	std::cout << longest_palindrome << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
