@@ -1,0 +1,59 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <iostream>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include <vector>
+
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+	//vector<vector<int>> triangle; you can do this with vectors, but I had to edit the text files for comma delimiters...
+	int triangle[15][15];
+	ifstream tnums;
+	tnums.open("p018_triangle.txt");
+	string level;
+	if (!tnums)
+	{
+		cout << "couldn't open file" << endl;
+		system("pause");
+		return 0;
+	}
+
+	/*while (getline(tnums, level, ',')) {
+	triangle.push_back(split(level, ' '));
+	}
+	*/
+	int s, t;
+	for (s = 0; s < 15; s++)
+	{
+		for (t = 0; t - s < 1; t++)
+		{
+			tnums >> triangle[s][t];
+		}
+	}
+
+	for (int i = 13; i >= 0; --i) {
+		for (int j = 0; j <= i; ++j) {
+			triangle[i][j] += max(triangle[i + 1][j], triangle[i + 1][j + 1]);
+		}
+	}
+
+	cout << triangle[0][0] << endl;
+	std::cout << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+}
