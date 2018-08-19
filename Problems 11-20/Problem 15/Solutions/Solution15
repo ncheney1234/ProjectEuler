@@ -1,0 +1,65 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Grid.h"
+#include "PathsFunction.h"
+
+using namespace std;
+
+
+
+
+int main() {
+	unsigned t0 = clock();
+
+	Grid myGrid(2,2);
+	//myGrid.getPaths();
+
+	
+
+	
+	long gridsize = 20;
+	long long paths[20][20];
+	
+
+	for (long long k = 0; k < gridsize; k++) { //initialize every cell to 0
+		for (long long l = 0; l < gridsize; l++) {
+			paths[k][l] = 0;
+		}
+	}
+		paths[0][0] = 2;
+	for (long long i = 1; i < gridsize; i++) {  //the 1 by y or x by 1 grids are simply y+1 or x+1 respectively 
+		paths[i][0] = paths[i - 1][0] + 1;
+	}
+
+	for (long long j = 1; j < gridsize; j++) {
+		paths[0][j] = paths[0][j-1] + 1;
+
+	}
+	
+	for (long long k = 1; k < gridsize; k++) {
+		for (long long l = 1; l < gridsize; l++) {
+			paths[k][l] = paths[k-1][l] + paths[k][l-1];
+			//cout << paths[k][l] << endl;
+
+		}
+	}
+
+	cout << paths[19][19] << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+return 0;
+
+}
