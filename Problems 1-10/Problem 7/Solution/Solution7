@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cmath>
+#include <ctime>
+#include "Problem7_header.h"
+
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+	int number = 2;
+	int count = 0;
+
+	while (count < 10001) {
+		if (isPrime(number)) {
+			count++;
+
+		}
+		if (count < 10001) { number++; }
+	}
+
+	std::cout << number << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
