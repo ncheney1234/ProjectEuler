@@ -1,0 +1,90 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <iostream>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+
+	int grid[20][20];
+
+	ifstream mygrid;
+	mygrid.open("Grid_20_20.txt");
+	string mystring;
+	string c;
+	if (!mygrid)
+	{
+		cout << "couldn't open file" << endl;
+		system("pause");
+		return 0;
+	}
+
+	int s, t;
+	for (s = 0; s < 20; s++)
+	{
+		for (t = 0; t  < 20; t++)
+		{
+			mygrid >> grid[s][t];
+		}
+	}
+	int greatestproduct = 0;
+
+	//vertical
+
+	for (int i = 0; i < 16; i++) {
+		for (int j = 0; j < 20; j++) {
+			int product = grid[i][j] * grid[i + 1][j] * grid[i + 2][j] * grid[i + 3][j];
+			if (product > greatestproduct) {
+				greatestproduct = product;
+			}
+		}
+	}
+	//horizontal
+	for (int i = 0; i < 20; i++) {
+		for (int j = 0; j < 16; j++) {
+			int product = grid[i][j] * grid[i][j + 1] * grid[i][j + 2] * grid[i][j + 3];
+			if (product > greatestproduct) {
+				greatestproduct = product;
+			}
+		}
+	}
+	//diagonal \
+
+	for (int i = 0; i < 16; i++) {
+		for (int j = 0; j < 16; j++) {
+			int product = grid[i][j] * grid[i + 1][j + 1] * grid[i + 2][j + 2] * grid[i + 3][j + 3];
+			if (product > greatestproduct) {
+				greatestproduct = product;
+			}
+		}
+	}
+	//diagonal /
+
+	for (int i = 3; i < 20; i++) {
+		for (int j = 3; j < 20; j++) {
+			int product = grid[i][j] * grid[i - 1][j + 1] * grid[i - 2][j + 2] * grid[i - 3][j + 3];
+			if (product > greatestproduct) {
+				greatestproduct = product;
+			}
+		}
+	}
+
+	std::cout <<greatestproduct<< endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
