@@ -1,0 +1,35 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <iostream>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header30.h"
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+	long long total = 0;
+	for (long long i = 2; i < 354294; i++) {
+		if (i == sumpowerdigits(i, 5)) {
+			total += i;
+		}
+
+	}
+
+	std::cout << total<< endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
