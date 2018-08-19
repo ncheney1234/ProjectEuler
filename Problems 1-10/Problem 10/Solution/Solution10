@@ -1,0 +1,33 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <iostream>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header_10.h"
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+	long long sum = 2; //2 is prime
+	for (long long i = 3; i < 2000000; i+=2) {
+		if (isPrime(i)) { sum += i; }
+
+	}
+
+	std::cout << sum << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
