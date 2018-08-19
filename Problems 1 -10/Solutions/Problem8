@@ -1,0 +1,72 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <iostream>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+
+	vector <long long> Series;
+
+	ifstream myseries;
+	myseries.open("series.txt");
+	string mystring;
+	string c;
+	if (!myseries)
+	{
+		cout << "couldn't open file" << endl;
+		system("pause");
+		return 0;
+	}
+
+	/*while (getline(tnums, level, ',')) {
+	triangle.push_back(split(level, ' '));
+	}
+	*/
+	long long s;
+	for (s = 0; s < 1000; s++)
+	{
+			myseries >> c;
+			mystring.append(c);
+			c.clear();
+		}
+	
+	
+	for (char& c : mystring) {
+		long long x = c - '0';
+		Series.push_back(x);
+	}
+	long long largestproduct = 0;
+	int counter = 0;
+	for (vector<long long>::iterator it = Series.begin(); it +13 != Series.end(); it++){
+		long long product = 1;
+		
+		for (vector<long long>::iterator in = it; in != it+13; in++) {
+			
+			product *= *in;
+		}
+		
+		if (product > largestproduct) { largestproduct = product; }
+		
+		
+		
+	}
+	std::cout << largestproduct<<endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+return 0;
+
+}
