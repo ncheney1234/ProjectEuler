@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cmath>
+#include <ctime>
+#include "Solution3_header.h"
+
+using namespace std;
+
+
+int main() {
+	unsigned t0 = clock();
+
+	long long composite_number = 600851475143;
+	long long largest_prime_Factor = 1;
+	for (long long i = 1; i <= sqrt(composite_number); i++){
+		if (isPrime(i)&&(composite_number%i==0)) {
+			
+			largest_prime_Factor = i; }
+		
+		
+	}
+
+
+	std::cout << largest_prime_Factor <<endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
