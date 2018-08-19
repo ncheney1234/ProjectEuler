@@ -1,0 +1,13 @@
+#pragma once
+#include <iostream>
+#include <cmath>
+#include <ctime>
+
+unsigned long long reverse(unsigned long long n) {
+	long long reversed = 0;
+	while (n > 0) {
+		reversed = 10 * reversed + n % 10;
+		n = n / 10;
+	}
+	return reversed;  //reverses digit order (ex: 1234 -> 4321
+}
