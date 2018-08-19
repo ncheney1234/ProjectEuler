@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cmath>
+#include <ctime>
+#include "Solution2Header.h"
+
+using namespace std;
+
+
+int main() {
+	unsigned t0 = clock();
+
+	long total = 0;
+	long biggest_fibonacci = 0;
+	int fibonacci_subscript = 1;
+	while (biggest_fibonacci<4000000)
+	{
+		if (nthfibonacci(fibonacci_subscript)%2==0) {
+			total = total + nthfibonacci(fibonacci_subscript);
+			
+		}
+		fibonacci_subscript++;
+		biggest_fibonacci = nthfibonacci(fibonacci_subscript);
+	}
+	std::cout<< total <<endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
