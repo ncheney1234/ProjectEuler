@@ -1,0 +1,28 @@
+#include <iostream>
+#include "Header_14.h"
+#include <cmath>
+#include <ctime>
+#include <stdio.h>      
+#include <stdarg.h> 
+using namespace std;
+
+
+int main() {
+	unsigned t0 = clock();
+
+	long long longestchain = 0;
+	long long longestchain_number = 0;
+	for (long long i = 1; i < 1000000;i++) {
+		if (Collatz_Chain_count(i) > longestchain) {
+			longestchain = Collatz_Chain_count(i);
+			longestchain_number = i;
+		}
+	}
+
+	std::cout << longestchain << " chained numbers with initial value " << longestchain_number << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
