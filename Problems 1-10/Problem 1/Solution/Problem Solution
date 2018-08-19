@@ -1,0 +1,21 @@
+#include <iostream>
+#include "SumMultiples.h"
+#include <cmath>
+#include <ctime>
+#include <stdio.h>      
+#include <stdarg.h> 
+using namespace std;
+
+
+int main() {
+	unsigned t0 = clock();
+
+	std::cout << SumMultiples(1000) << endl;
+	
+	std::cout << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
