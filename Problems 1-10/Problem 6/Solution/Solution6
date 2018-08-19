@@ -1,0 +1,22 @@
+#include <iostream>
+#include <cmath>
+#include <ctime>
+#include "Problem6_header.h"
+
+using namespace std;
+
+int main(){
+	unsigned t0 = clock();
+	long long SumSquare = 0;
+	long long Total = 100*101/2;
+	for (long long i = 1; i <= 100; i++) {
+		SumSquare = SumSquare + myPow(i,2);
+	}
+	
+	std::cout << myPow(Total,2) - SumSquare <<endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
