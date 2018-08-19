@@ -1,0 +1,39 @@
+#pragma once
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <iostream>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+
+int recipricolcycles(int r) {
+	list<int> mycycles;
+	int totalcycles = 0;
+	int i = 1;
+	while (true) {
+		for (list<int>::iterator it = mycycles.begin(); it != mycycles.end(); ++it) {
+			if (i == *it) { return totalcycles - 1; }
+		}
+		if (i%r == 0) { return 0; }
+		else {
+			mycycles.push_back(i);
+			i = i % r;
+			i *= 10;
+
+			totalcycles++;
+
+		}
+
+	}
+
+}
