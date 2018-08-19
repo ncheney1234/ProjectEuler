@@ -1,0 +1,40 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <iostream>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header_26.h"
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+
+int mostcycles = 1;
+int d = 1;
+for (int n = 1; n < 1000; n++) {
+
+	if (recipricolcycles(n)> mostcycles) {
+		mostcycles = recipricolcycles(n);
+		d = n;
+		
+
+	}
+}
+
+std::cout << "1/" << d << " has " << mostcycles << " cycles" << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
