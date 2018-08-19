@@ -1,0 +1,17 @@
+#pragma once
+#include <iostream>
+#include <cmath>
+#include <ctime>
+
+
+
+int numdivisors(long r){
+	int total = 0;
+	for (int n = 1; n*n <= r; n++){
+		if (r%n == 0){
+			if (n == r / n){ total += 1; }
+			else{ total += 2; }
+		}
+	}
+	return total;  //determines number of divisors
+}
