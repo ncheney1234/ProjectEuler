@@ -1,0 +1,219 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+
+
+int main() {
+
+	list<long long> trianglenums;
+	list<long long> squarenums;
+	list<long long> pentagonnums;
+	list<long long> hexagonnums;
+	list<long long> heptagonnums;
+	list<long long> octagonnums;
+
+	unsigned t0 = clock();
+	for (int t = 45; t < 141; t++) {  // we seek 4 digit numbers, 140 is the max number for triangle numbers
+		if (((t*(t + 1) / 2) / 10) % 10 != 0) {
+
+			trianglenums.push_back(t*(t + 1) / 2);
+		}
+	}
+	for (int t = 32; t < 100; t++) {  // we seek 4 digit numbers, 99 is the max number for square numbers
+		if (((t*t) / 10) % 10 != 0) {
+			squarenums.push_back(t*t);
+		}
+	}
+	for (int t = 26; t < 82; t++) {  // we seek 4 digit numbers, 81 is the max number for pentagon numbers
+		if (((t*(3 * t - 1) / 2) / 10) % 10 != 0) {
+			pentagonnums.push_back(t*(3 * t - 1) / 2);
+		}
+	}
+	for (int t = 23; t < 71; t++) {  // we seek 4 digit numbers, 70 is the max number for hexagon numbers
+		if ((t*(2 * t - 1) / 10) % 10 != 0) {
+			hexagonnums.push_back(t*(2 * t - 1));
+		}
+	}
+	for (int t = 21; t < 64; t++) {  // we seek 4 digit numbers, 63 is the max number for heptagon numbers
+		if (((t*(5 * t - 3) / 2) / 10) % 10 != 0) {
+			heptagonnums.push_back(t*(5 * t - 3) / 2);
+		}
+	}
+	for (int t = 19; t < 59; t++) {  // we seek 4 digit numbers, 58 is the max number for octagon numbers
+		if ((t*(3 * t - 2) / 10) % 10 != 0) {
+			octagonnums.push_back(t*(3 * t - 2));
+		}
+	}
+
+	int mylists[] = { 0, 1, 2, 3, 4, 5 };  //this is to sort all the combinations of the 6 types of numbers
+	do {
+		list<long long> a;
+		list<long long> b;
+		list<long long> c;
+		list<long long> d;
+		list<long long> e;
+		list<long long> f;
+		//we are going to permute all combinations where we have 1 of each type of number.    
+#pragma region if
+		if (mylists[0] == 0) {
+			a = trianglenums;
+		}
+		if (mylists[1] == 0) {
+			b = trianglenums;
+		}
+		if (mylists[2] == 0) {
+			c = trianglenums;
+		}
+		if (mylists[3] == 0) {
+			d = trianglenums;
+		}
+		if (mylists[4] == 0) {
+			e = trianglenums;
+		}
+		if (mylists[5] == 0) {
+			f = trianglenums;
+		}
+		if (mylists[0] == 1) {
+			a = squarenums;
+		}
+		if (mylists[1] == 1) {
+			b = squarenums;
+		}
+		if (mylists[2] == 1) {
+			c = squarenums;
+		}
+		if (mylists[3] == 1) {
+			d = squarenums;
+		}
+		if (mylists[4] == 1) {
+			e = squarenums;
+		}
+		if (mylists[5] == 1) {
+			f = squarenums;
+		}
+		if (mylists[0] == 2) {
+			a = pentagonnums;
+		}
+		if (mylists[1] == 2) {
+			b = pentagonnums;
+		}
+		if (mylists[2] == 2) {
+			c = pentagonnums;
+		}
+		if (mylists[3] == 2) {
+			d = pentagonnums;
+		}
+		if (mylists[4] == 2) {
+			e = pentagonnums;
+		}
+		if (mylists[5] == 2) {
+			f = pentagonnums;
+		}
+		if (mylists[0] == 3) {
+			a = hexagonnums;
+		}
+		if (mylists[1] == 3) {
+			b = hexagonnums;
+		}
+		if (mylists[2] == 3) {
+			c = hexagonnums;
+		}
+		if (mylists[3] == 3) {
+			d = hexagonnums;
+		}
+		if (mylists[4] == 3) {
+			e = hexagonnums;
+		}
+		if (mylists[5] == 3) {
+			f = hexagonnums;
+		}
+		if (mylists[0] == 4) {
+			a = heptagonnums;
+		}
+		if (mylists[1] == 4) {
+			b = heptagonnums;
+		}
+		if (mylists[2] == 4) {
+			c = heptagonnums;
+		}
+		if (mylists[3] == 4) {
+			d = heptagonnums;
+		}
+		if (mylists[4] == 4) {
+			e = heptagonnums;
+		}
+		if (mylists[5] == 4) {
+			f = heptagonnums;
+		}
+		if (mylists[0] == 5) {
+			a = octagonnums;
+		}
+		if (mylists[1] == 5) {
+			b = octagonnums;
+		}
+		if (mylists[2] == 5) {
+			c = octagonnums;
+		}
+		if (mylists[3] == 5) {
+			d = octagonnums;
+		}
+		if (mylists[4] == 5) {
+			e = octagonnums;
+		}
+		if (mylists[5] == 5) {
+			f = octagonnums;
+		}
+#pragma endregion
+		// check if condition 2 is met by iterating through all sets.  ensure that the first 2 digits = last 2 digits.
+		for (list<long long>::iterator t = a.begin(); t != a.end(); ++t) {
+
+			for (list<long long>::iterator n = b.begin(); n != b.end(); ++n) {
+				if (*t / 100 == *n % 100) {
+					for (list<long long>::iterator k = c.begin(); k != c.end(); ++k) {
+						if (*n / 100 == *k % 100) {
+							for (list<long long>::iterator p = d.begin(); p != d.end(); ++p) {
+								if (*k / 100 == *p % 100) {
+									for (list<long long>::iterator l = e.begin(); l != e.end(); ++l) {
+										if (*p / 100 == *l % 100) {
+											for (list<long long>::iterator o = f.begin(); o != f.end(); ++o) {
+												if (*l / 100 == *o % 100 && *o / 100 == *t % 100) {
+													std::cout << *o << '-' << *l << '-' << *p << '-' << *k << '-' << *n << '-' << *t << '-' << *o << endl; //if all conditions are met, display chain
+													std::cout << *o + *l + *p + *k + *n + *t << endl; // take sum 
+													unsigned elapsed = clock() - t0;
+													std::cout << "Elapsed time: " << elapsed << endl;
+													system("pause");
+													return 0;
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+
+			}
+		}
+	} while (next_permutation(mylists, mylists + 6));
+
+
+	std::cout << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
