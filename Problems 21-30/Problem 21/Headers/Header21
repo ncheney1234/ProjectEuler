@@ -1,0 +1,40 @@
+#pragma once
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+#define ll long long
+
+int sumdiv(int r) {
+	int total = 1;
+	for (int i = 2; i*i <= r; i++) {
+		if (r % i == 0) {
+			if (i == r / i) {
+				total = i + total;
+			}
+			else {
+				total = i + r / i + total;
+			}
+		}
+	}
+	return total;  // Determines sum of a number's divisors.
+}
+
+
+int amicableNumber(int p) {
+	if (p==sumdiv(sumdiv(p))&&(p!=sumdiv(p))) {
+		return true;
+	}
+	return false;
+}
