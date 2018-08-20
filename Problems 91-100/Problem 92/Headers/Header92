@@ -1,0 +1,26 @@
+#pragma once
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+
+long sumsqrdigits(long r) {
+	int sum = 0;
+	while (r != 0)
+	{
+		sum = sum + (r % 10)*(r % 10);
+		r = r / 10;
+	}
+	return sum;  //returns sum of the digits squared
+}
