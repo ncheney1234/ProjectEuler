@@ -1,0 +1,56 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header52.h"
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+
+	list<long long> candidates;
+
+	for (long long n = 100000; n < 160000; n++) {
+
+		list<long long> a = digitlist(n);
+		list<long long> f = digitlist(6 * n);
+		a.sort();
+		f.sort();
+		if (a == f) {
+			candidates.push_back(n);
+		}
+	}
+
+	for (list<long long>::iterator it = candidates.begin(); it != candidates.end(); ++it) {
+		list<long long> q = digitlist(*it);
+		list<long long> r = digitlist(2 * (*it));
+		list<long long> s = digitlist(3 * (*it));
+		list<long long> t = digitlist(4 * (*it));
+		list<long long> u = digitlist(5 * (*it));
+		q.sort();
+		r.sort();
+		s.sort();
+		t.sort();
+		u.sort();
+		if (q == r && q == s && q == t && q == u) {
+			cout << *it << endl;
+			break;
+		}
+	}
+	std::cout << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
