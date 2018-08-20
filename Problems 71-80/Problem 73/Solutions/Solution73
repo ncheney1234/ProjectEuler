@@ -1,0 +1,39 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header73.h"
+using namespace std;
+int main() {
+	unsigned t0 = clock();
+long long  count = 0;
+for (long long d = 2; d <= 12000; d++) {
+	for (long long n = d / 4 + 1; n<d / 2 + 1; n++) {
+		if (gcd(n, d) == 1) {
+			double a = (double)n;
+			double b = (double)d;
+			if (a / b > .3333333333333334 && a / b < .5) {
+				count++;
+			}
+		}
+	}
+}
+cout << count << endl;
+
+std::cout << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
