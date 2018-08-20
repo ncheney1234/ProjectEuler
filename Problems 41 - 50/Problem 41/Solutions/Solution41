@@ -1,0 +1,51 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header41.h"
+using namespace std;
+
+
+
+int main() {
+	unsigned t0 = clock();
+	// any number divisible by 9 has a sum of all their digits being divisible by 9, which is eliminates 1-8 and 1-9 pandigital numbers
+	list<long long> pandigital;
+	long long myints[] = { 1, 2, 3, 4, 5, 6, 7 };
+	long long count = 0;
+	int total = 0;
+	do {
+
+		count = 1000000 * myints[0] + 100000 * myints[1] + 10000 * myints[2] + 1000 * myints[3] + 100 * myints[4] + 10 * myints[5] + myints[6];
+		if (count % 2 != 0) {
+			pandigital.push_back(count);
+			total++;
+		}
+
+	} while (next_permutation(myints, myints + 7));
+
+	long long max_prime = 2;
+	for (list<long long>::iterator it = pandigital.begin(); it != pandigital.end(); ++it) {
+		if (isPrime(*it)) {
+			max_prime = *it;
+		}
+	}
+
+
+std::cout << max_prime << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
