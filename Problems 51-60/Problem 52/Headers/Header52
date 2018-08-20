@@ -1,0 +1,51 @@
+
+#pragma once
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+
+list<long long> digitlist(long long x) {
+	list <long long>mylist;
+	while (x >= 10) {
+		mylist.push_back(x % 10);
+		x = x / 10;
+	}
+
+	mylist.push_back(x);
+	reverse(mylist.begin(), mylist.end());
+
+
+	return mylist;
+}
+
+vector<long long> digits(long long x) {
+	vector<long long> myvec;
+	while (x >= 10) {
+		myvec.push_back(x % 10);
+		x = x / 10;
+	}
+	myvec.push_back(x);
+	reverse(myvec.begin(), myvec.end());
+	return myvec;
+}
+
+long long reverse(long long n) {
+	long long reversed = 0;
+	while (n > 0) {
+		reversed = 10 * reversed + n % 10;
+		n = n / 10;
+	}
+	return reversed;  //reverses digit order (ex: 1234 -> 4321
+}
