@@ -1,0 +1,48 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header92.h"
+using namespace std;
+
+
+int main() {
+	unsigned t0 = clock();
+
+int count = 0;
+int p;
+for (int g = 2; g < 10000000; g++) {
+	p = g;
+	while (true) {
+		p = sumsqrdigits(p);
+		if (p == 1) {
+			break;
+		}
+		else if (p == 89) {
+			count++;
+			break;
+		}
+
+	}
+
+}
+cout << count << endl;
+
+
+std::cout << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
