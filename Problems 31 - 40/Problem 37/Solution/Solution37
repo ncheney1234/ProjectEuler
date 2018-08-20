@@ -1,0 +1,38 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header37.h"
+using namespace std;
+
+
+int main() {
+	unsigned t0 = clock();
+	cout << 0 << endl;
+int trunctotal = 0;
+for (long long q = 11; q < 1000000; q++) {
+
+	if (isTruncleft(q) && isTruncright(q)) {
+		cout << "+ " << q << endl;
+		trunctotal += q;
+	}
+}
+
+
+std::cout << "= "<<trunctotal << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
