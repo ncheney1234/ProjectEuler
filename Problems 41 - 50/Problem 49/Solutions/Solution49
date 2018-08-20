@@ -1,0 +1,88 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header49.h"
+using namespace std;
+int main() {
+	unsigned t0 = clock();
+
+
+	list<long> permutableprime;
+	for (long n = 1001; n < 9999; n++) {  // we check all 4 digit numbers as the problem implies.
+		if (isPrime(n)) {  // is the first value prime?
+			vector<long> myvec = digits(n);  // get digits as a vector
+			permutableprime.clear();  // clear list to begin new process
+			do {
+				if (isPrime(1000 * myvec[3] + 100 * myvec[2] + 10 * myvec[1] + myvec[0])) { // go through all permuations to check if they are prime
+					if (numdigits(1000 * myvec[3] + 100 * myvec[2] + 10 * myvec[1] + myvec[0]) == 4) {//checks if it's a 4 digit number (avoid 4100 -> 0014)
+						permutableprime.push_back(1000 * myvec[3] + 100 * myvec[2] + 10 * myvec[1] + myvec[0]);  // add the primes that qualify to the list
+					}
+				}
+
+			} while (next_permutation(myvec.begin(), myvec.end())); //check all permutations of the vector
+			permutableprime.sort();  
+			long a = 0;
+			if (permutableprime.size() > 2) { //we need a set of 3 primes as the problem illustrates
+				list<long> mydifferences; // we are going to check all the differences of the primes
+				mydifferences.clear(); //clear for each run through the algorithm
+				for (list<long>::iterator it = permutableprime.begin(); it != permutableprime.end(); ++it) { //run through the list
+					for (list<long>::iterator in = permutableprime.begin(); in != permutableprime.end(); ++in) { // run through it again to compare within itself
+
+						if ((*it > *in) && ((*it - *in) < 4500)) { // if they are greater than 4500, then the sequence isnt possible, i believe the inequality of iterators is to avoid duplicates
+							mydifferences.push_back(*it - *in);
+						}
+
+					}
+
+				}
+
+				mydifferences.sort(); // sort all the differences
+				long k = 0;
+				for (list<long>::iterator it = mydifferences.begin(); it != mydifferences.end(); ++it) {  //iterate differences
+					for (list<long>::iterator in = mydifferences.begin(); in != mydifferences.end(); ++in) { //iterated differences again
+						if ((*it == *in) && (it != in)) { //if we find differences in the list but are not from the same iterator they will reference a different difference
+							k = *it; // we define k to be the difference
+							for (list<long>::iterator it = permutableprime.begin(); it != permutableprime.end(); ++it) {
+								for (list<long>::iterator in = permutableprime.begin(); in != permutableprime.end(); ++in) {
+									for (list<long>::iterator ik = permutableprime.begin(); ik != permutableprime.end(); ++ik) {
+//after permuting through 3 layers of iterations of permutable primes, we check for the three permutations that have that difference but do not contain 1487
+										if ((*it + k == *in) && (*it < *in)) {  
+											if ((*in + k == *ik) && (*in < *ik) && *it != 1487) {
+												cout << *it << ' ' << *in << ' ' << *ik << " are the three numbers" << endl;
+												cout << to_string(*it)  + to_string(*in) + to_string(*ik) << " is the concatenated number"<<endl;
+												unsigned elapsed = clock() - t0;
+												std::cout << "Elapsed time: " << elapsed << endl;
+												system("pause");
+												return 0;
+
+
+											}
+										}
+
+
+									}
+								}
+							}
+						}
+
+					}
+				}
+
+
+			}
+		}
+
+	}
+
+}
