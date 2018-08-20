@@ -1,0 +1,56 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+#define ll long long
+
+
+int main() {
+	unsigned t0 = clock();
+
+list<string> name; //define string name
+
+ifstream names;
+names.open("p022_names.txt"); //open names text file
+string row;
+int sumchar;
+int totalchar = 0;
+if (!names)
+{
+	std::cout << "couldn't open file" << endl;
+	system("pause");
+	return 0;
+}
+while (getline(names, row, ',')) { //we will add each string to the list through the text file delimitted by ","
+	name.push_back(row);
+}
+name.sort();
+for (list<string>::iterator it = name.begin(); it != name.end(); ++it) { //loop through each name
+	sumchar = 0;
+	for (const char& c : *it) { // loop through each character in the string / name
+		sumchar += (int)c - 64; // the ascii value of A is 65
+	}
+	sumchar += 60;  // the quotes "" both have ascii value 34, so we lose 60 for each name. 
+	totalchar += sumchar * (distance(name.begin(), it) + 1);
+}
+
+std::cout << totalchar << endl;
+
+std::cout << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
