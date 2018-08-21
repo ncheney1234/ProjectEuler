@@ -1,0 +1,57 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header27.h"
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+	list<int> primes;
+
+primes.push_back(2);
+for (int j = 3; j < 1000; j += 2) {
+	if (isPrime(j)) {
+		primes.push_back(j);
+	}
+}
+	int max_n = 0;
+	int max_a = 0;
+	int max_b = 0;
+	
+	for (long a = -1000; a < 1000; a++) {
+	for (list<int>::iterator it = primes.begin(); it != primes.end(); ++it) {
+		int n = 0;
+		while (true) {
+			if (isPrime(n*n + a * n + *it)) {
+				n++;
+			}
+			else {
+				if (n > max_n) {
+					max_n = n;
+					max_a = a;
+					max_b = *it;
+				}
+			break;
+			}
+		}
+	}
+}
+cout << max_b * max_a << endl;
+
+std::cout << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+}
