@@ -1,0 +1,61 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header81.h"
+using namespace std;
+
+
+
+int main() {
+	unsigned t0 = clock();
+
+vector<vector<int>> grid;
+
+
+ifstream nums;
+nums.open("p081_matrix.txt");
+string row;
+if (!nums)
+{
+	cout << "couldn't open file" << endl;
+	system("pause");
+	return 0;
+}
+
+while (getline(nums, row, '\n')) {
+	grid.push_back(split(row, ','));
+}
+
+for (int i = 78; i >= 0; i--) {
+	grid[i][79] += grid[i + 1][79];
+}
+for (int j = 78; j >= 0; j--) {
+	grid[79][j] += grid[79][j + 1];
+}
+for (int i = 78; i >= 0; i--) {
+	for (int j = 78; j >= 0; j--) {
+		grid[i][j] += min(grid[i][j + 1], grid[i + 1][j]);
+	}
+
+}
+cout << grid[0][0] << endl;
+
+
+std::cout << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
