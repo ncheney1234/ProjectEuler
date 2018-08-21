@@ -1,0 +1,66 @@
+#pragma once
+
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+
+unsigned long long myPow(unsigned long long x, unsigned long long p) {
+	if (p == 0) { return 1; }
+	if (p == 1) { return x; }
+	return x * myPow(x, p - 1);  //power function
+}
+
+
+int numdigits(unsigned long long r) {
+	unsigned int number_of_digits = 0;
+
+	do {
+		++number_of_digits;
+		r /= 10;
+	} while (r>0);
+	return number_of_digits; //determines length of a number
+}
+
+vector<int> digits(int x) {
+	vector<int> myvec;
+	while (x >= 10) {
+		myvec.push_back(x % 10);
+		x = x / 10;
+	}
+
+	myvec.push_back(x);
+	reverse(myvec.begin(), myvec.end());
+
+
+	return myvec;
+}
+
+bool isPrime(unsigned long long n) {
+	if (n <= 3) {
+		return n > 1;
+	}
+
+	if (n % 2 == 0 || n % 3 == 0) {
+		return false;
+	}
+
+	for (unsigned long long i = 5; i * i <= n; i += 6) {
+		if (n % i == 0 || n % (i + 2) == 0) {
+			return false;
+		}
+	}
+
+	return true;
+}
