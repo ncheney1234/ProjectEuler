@@ -1,0 +1,26 @@
+#pragma once
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+
+vector<int> split(string line, char a) {
+	stringstream ss(line);
+	vector<int> result;
+	string num;
+	while (getline(ss, num, a)) {
+		result.push_back(stoi(num));
+	}
+	return result;
+}
