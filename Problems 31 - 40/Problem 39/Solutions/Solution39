@@ -1,0 +1,49 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+
+
+
+int main() {
+	unsigned t0 = clock();
+int count;
+int maxcount = 0;
+int maxperi = 0;
+for (int p = 2; p <= 1000; p+=2) {
+	count = 0;
+	for (int i = 1; i < 500; i++) {
+		for (int j = 1; j < i; j++) {
+			for (int k = 1; k < j; k++) {
+
+				if ((i*i == j * j + k * k) && (i + j + k == p)) {
+					count++;
+				}
+			}
+		}
+	}
+	if (count > maxcount) {
+		maxcount = count;
+		maxperi = p;
+		cout << maxperi << endl;
+	}
+}
+
+std::cout << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
