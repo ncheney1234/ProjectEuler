@@ -1,0 +1,51 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+
+
+int main() {
+	unsigned t0 = clock();
+
+long long rectclose = 100000;
+int optimalheight = 0;
+int optimalwidth = 0;
+
+for (int n = 1; n < 100; n++) {
+	for (int k = 1; k <= n; k++) {
+		long long rectotal = 0;
+		for (long long i = 0; i < n; i++) {
+			for (long long j = 0; j < k; j++) {
+				rectotal += (n - i)*(k - j);
+
+
+			}
+		}
+
+		if (abs(rectotal - 2000000) < rectclose) {
+			rectclose = abs(rectotal - 2000000);
+			optimalheight = n;
+			optimalwidth = k;
+		}
+	}
+}
+
+cout << optimalheight<< 'x' << optimalwidth << " area: " << optimalheight * optimalwidth << endl;
+std::cout << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
