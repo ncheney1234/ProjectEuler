@@ -1,0 +1,50 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+
+
+int main() {
+	unsigned t0 = clock();
+
+list<int> candidate;
+long long myints[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+double tot = 0;
+do {
+	if (myints[0] * (1000 * myints[1] + 100 * myints[2] + 10 * myints[3] + myints[4]) == 1000 * myints[5] + 100 * myints[6] + 10 * myints[7] + myints[8]) {
+		candidate.push_back(1000 * myints[5] + 100 * myints[6] + 10 * myints[7] + myints[8]);
+	}
+	if ((10 * myints[0] + myints[1]) * (100 * myints[2] + 10 * myints[3] + myints[4]) == 1000 * myints[5] + 100 * myints[6] + 10 * myints[7] + myints[8]) {
+		candidate.push_back(1000 * myints[5] + 100 * myints[6] + 10 * myints[7] + myints[8]);
+	}
+
+} while (next_permutation(myints, myints + 9));
+candidate.sort();
+int a = 0;
+for (list<int>::iterator it = candidate.begin(); it != candidate.end(); ++it) {
+	if (*it != a) {
+		tot += *it;
+		a = *it;
+	}
+}
+cout << tot << endl;
+
+
+std::cout << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
