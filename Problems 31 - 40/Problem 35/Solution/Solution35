@@ -1,0 +1,60 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header35.h"
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+
+int totalcircle = 1;
+for (int i = 3; i < 1000000; i += 2) {
+	if (isPrime(i)) {
+		long k = 0;
+		bool flag = true;
+		vector<int> mydigs = digits(i);
+		int h = numdigits(i);
+		int a;
+		while (i != k) {
+			k = 0;
+			a = h;
+			rotate(mydigs.begin(), mydigs.begin() + 1, mydigs.end());
+			for (vector<int>::iterator it = mydigs.begin(); it != mydigs.end(); ++it) {
+				k += (*it) * myPow(10, a - 1);
+				a--;
+			}
+
+			if (!isPrime(k)) {
+				flag = false;
+				break;
+			}
+
+		}
+		if (flag) {
+			//std::cout << i << endl;
+			totalcircle++;
+		}
+	}
+
+}
+std::cout << totalcircle << endl;
+
+
+std::cout << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
