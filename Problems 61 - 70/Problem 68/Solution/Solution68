@@ -1,0 +1,35 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+
+long long myints[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+double tot = 0;
+do {
+	if (myints[0] + myints[1] + myints[5] == myints[1] + myints[2] + myints[6] && myints[1] + myints[2] + myints[6] == myints[2] + myints[3] + myints[7] && myints[2] + myints[3] + myints[7] == myints[3] + myints[4] + myints[8] && myints[3] + myints[4] + myints[8] == myints[4] + myints[0] + myints[9] && myints[5] < myints[6] && myints[5] < myints[7] && myints[5] < myints[8] && myints[5] < myints[9]) {
+		cout << myints[5] << ',' << myints[0] << ',' << myints[1] << ';' << myints[6] << ',' << myints[1] << ',' << myints[2] << ';' << myints[7] << ',' << myints[2] << ',' << myints[3] << ';' << myints[8] << ',' << myints[3] << ',' << myints[4] << ';' << myints[9] << ',' << myints[4] << ',' << myints[0] << ';' << endl;
+	}
+
+} while (next_permutation(myints, myints + 10));
+
+std::cout << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
