@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+#include <ctime>
+
+
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+
+
+long long gridsize = 101;
+long long paths[101][101];
+//build a 2d array that contains the values of pascals triangle capped at 1 million
+
+long long max = 1000000;
+for (long long k = 0; k < gridsize; k++) { //initialize every cell to 0 or 1
+	for (long long l = 0; l < gridsize; l++) {
+
+		if (l == 0|| l==k) { paths[k][l] = 1; }
+		else {
+			paths[k][l] = min(paths[k - 1][l] + paths[k - 1][l - 1], max);  
+		}
+	}
+} 
+
+//count how many are greater than or equal to 1 million
+
+int count = 0;
+for (long long i = 0; i < gridsize; i++) {
+	for (long long j = 0; j <= i; j++) {
+		if (paths[i][j] >= 1000000) {
+			count++;
+		}
+			
+	}
+
+}
+
+cout << count << endl;
+
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
