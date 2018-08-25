@@ -1,0 +1,68 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header95.h"
+using namespace std;
+
+
+int main() {
+	unsigned t0 = clock();
+int maxcount = 0;
+int maxseed = 0;
+int count;
+int a, p;
+for (int g = 12496; g < 1000000; g++) {
+	p = g;
+	a = p;
+	count = 0;
+	while ((p < 1000000) && (count < 100)) {
+		count++;
+		p = sumdiv(p) - p;
+
+		if (p == a) {
+			if (count > maxcount) {
+				maxseed = a;
+				maxcount = count;
+				count = 0;
+			}
+			break;
+
+		}
+
+
+	}
+
+}
+
+cout << maxseed << endl;
+cout << maxcount << endl;
+int minseed = maxseed;
+int ra = minseed;
+for (int f = 0; f < maxcount; f++) {
+	ra = sumdiv(ra) - ra;
+	if (ra < minseed) {
+		ra = minseed;
+	}
+
+}
+cout << minseed << endl;
+
+
+std::cout << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
