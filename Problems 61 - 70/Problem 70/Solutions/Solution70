@@ -1,0 +1,60 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header70.h"
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+
+	list<long long> primes;
+
+
+	primes.push_back(2);
+	for (long long n = 1001; n < 10000; n += 2) {
+		if (isPrime(n)) { primes.push_back(n); }
+	}
+	long double mintotient = 2;
+	long long p;
+	long double euler;
+	for (list<long long>::iterator t = primes.begin(); t != primes.end(); ++t) {
+		for (list<long long>::iterator n = primes.begin(); n != primes.end(); ++n) {
+			p = *t * (*n);
+			if (*t * (*n) > 10000000) { break; }
+			long double r = p;
+			if (*t != *n) {
+				euler = (*t - 1)*(*n - 1);
+			}
+			if (*t == *n) {
+				euler = (*n)*(*n - 1);
+			}
+			list<int> mydigs = digitlist(p);
+			list<int> mytotientdigs = digitlist(euler);
+			mydigs.sort();
+			mytotientdigs.sort();
+			if (mydigs == mytotientdigs) {
+				if (r / euler < mintotient) {
+					mintotient = r / euler;
+					cout << mintotient << " = " << r << " / " << euler << " primes are: " << *t << " x " << *n << " = " << *t * *n<<endl;
+				}
+			}
+		}
+	}
+	std::cout << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
