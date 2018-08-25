@@ -1,0 +1,70 @@
+#include <iostream>
+#include <list>
+#include <fstream>
+#include <string>
+#include <ctime>
+
+
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+	list<int> test;
+
+	ifstream cipher;
+	cipher.open("cipher.txt");
+	string row;
+	if (!cipher)
+	{
+		cout << "couldn't open file" << endl;
+		system("pause");
+		return 0;
+	}
+
+	while (getline(cipher, row, ',')) {
+		test.push_back(stoi(row));
+	}
+	while (true) {
+		char pas;
+		char swo;
+		char rd;
+		cin >> pas;
+		cin >> swo;
+		cin >> rd;
+		int counter = 0;
+		for (list<int>::iterator it = test.begin(); it != test.end(); ++it) {
+			(char)*it;
+			if (counter % 3 == 0) {
+				*it ^= pas;
+				
+
+			}
+			else if (counter % 3 == 1) {
+				*it ^= swo;
+				
+			}
+			else {
+				*it ^= rd;
+				
+			}
+			counter++;
+		}
+
+
+		int totalencrypt = 0;
+		for (list<int>::iterator it = test.begin(); it != test.end(); ++it) {
+			cout << (char)*it << ' ';
+			totalencrypt += *it;
+		}
+		cout << endl;
+		cout << totalencrypt << endl;
+	}
+
+
+	std::cout << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
