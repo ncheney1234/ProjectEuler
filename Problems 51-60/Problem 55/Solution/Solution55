@@ -1,0 +1,22 @@
+#include <iostream>
+#include <cmath>
+#include <ctime>
+#include "problem55_header.h"
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+	int count = 0;
+	for (int i = 0; i < 10000; i++) {
+		if (!existpalindrome(i)) { count++; }
+		
+	}
+
+
+	std::cout <<count<< endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
