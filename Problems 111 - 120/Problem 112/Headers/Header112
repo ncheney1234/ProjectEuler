@@ -1,0 +1,29 @@
+#pragma once
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+vector<int> digits(int x) {
+	vector<int> myvec;
+	while (x >= 10) {
+		myvec.push_back(x % 10);
+		x = x / 10;
+	}
+
+	myvec.push_back(x);
+	reverse(myvec.begin(), myvec.end());
+
+
+	return myvec;
+}
