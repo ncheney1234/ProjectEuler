@@ -1,0 +1,66 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header112.h"
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+
+
+double count = 0;
+bool flag;
+long maxtrial;
+
+for (long n = 1; n <= 2000780; n++) {
+	flag = true;
+	vector < int > mydigs = digits(n);
+	for (long i = 0; i < mydigs.size() - 1; i++) {
+		if (flag == false) { break; }
+		if (mydigs[i] <= mydigs[i + 1]) {
+			continue;
+		}
+		else {
+			for (long i = 0; i < mydigs.size() - 1; i++) {
+				if (mydigs[i] >= mydigs[i + 1]) {
+					continue;
+				}
+				else {
+
+					count++;
+					flag = false;
+					if (count / n >= .99) {
+						cout << n << endl;
+						cout << endl;
+						unsigned elapsed = clock() - t0;
+						std::cout << "Elapsed time: " << elapsed << endl;
+						system("pause");
+						return 0;
+					}
+					break;
+				}
+			}
+		}
+	}
+}
+
+
+
+std::cout << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
