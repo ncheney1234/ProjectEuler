@@ -1,0 +1,38 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header69.h"
+using namespace std;
+int main() {
+	unsigned t0 = clock();
+
+double maximum = 0;
+
+for (int n = 6; n < 1000000; n+=6) {
+	double r = n;
+	double i = eulertotient(n);
+	if (r / i > maximum) {
+		cout << n << ' ' << r / i << endl;
+		maximum = r / i;
+		
+	}
+}
+
+std::cout << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
