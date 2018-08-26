@@ -1,0 +1,46 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header33.h"
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+	
+	int a, b,c,d;  //    ab/cd
+	for (a = 1; a < 10; a++) {
+		for (b = 1; b < 10; b++) {
+			for (c = 1; c < 10; c++) {
+				for (d = 1; d < 10; d++) {
+					if (10*a+b < 10*c+d && a!=c && b!=d && !isPrime(10 * c + d)) {
+						double e = (10 * double(a) + double(b)) / (10 * double(c) + double(d));
+						double f = double(b) / double(c);
+						double g = double(a) / double(d);
+						if (a == d && abs(e - f) < .00001) {
+							cout << a << b << "/" << c << d << endl;
+						}
+						if (c == b && abs(e - g) < .00001) {
+							cout << a << b << "/" << c << d << endl;
+						}
+					}
+				}
+			}
+		}	
+	}
+	std::cout << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+}
