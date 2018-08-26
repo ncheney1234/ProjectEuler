@@ -1,0 +1,64 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header25.h"
+using namespace std;
+
+
+bigint nthfibonacci(bigint n) {
+	bigint i = 1;
+	bigint j = 1;
+	bigint k;
+	bigint count = 1;
+
+	while (count < n - 1) {
+		k = i;
+		i = j;
+		j = k + j;
+		count=count+1;
+	}
+	return j;  //standard fibonacci function
+}
+bigint numdigits(bigint r) {
+	bigint number_of_digits = 0;
+
+	do {
+		number_of_digits=number_of_digits+1;
+		r /= 10;
+	} while (r>0);
+	return number_of_digits; //determines length of a number
+}
+
+
+int main() {
+	unsigned t0 = clock();
+	bigint j = 1;
+	while(true) {
+		if (numdigits(nthfibonacci(j))==1000) {
+			cout << j << endl;
+			break;
+		}
+		else if (numdigits(nthfibonacci(j)) <= 1000) {
+			j = j + 1000 - numdigits(nthfibonacci(j));
+		}
+
+		else { j = j + 1; }
+	}
+
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
