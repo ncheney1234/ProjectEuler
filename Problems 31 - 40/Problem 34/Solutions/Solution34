@@ -1,0 +1,38 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header34.h"
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+	long long total = 0;
+	for (long long i = 10; i < 100000; i++) {
+		vector <long long> mydigits = digits(i);
+		long long digitsum = 0;
+		for (vector<long long>::iterator ir = mydigits.begin(); ir != mydigits.end(); ++ir) {
+			digitsum += factorial(*ir);
+		}
+		if (digitsum == i) {
+			cout << i << endl;
+			total = total + i;
+		}
+	}
+	cout << endl;
+	cout << total << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+}
