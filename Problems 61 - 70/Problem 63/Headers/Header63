@@ -1,0 +1,35 @@
+#pragma once
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "bigint.cpp"
+
+using namespace std;
+#define ll long long
+
+bigint myPow(bigint x, bigint p) {
+	if (p == 0) { return 1; }
+	if (p == 1) { return x; }
+	return x * myPow(x, p - 1);  //power function
+}
+
+bigint numdigits(bigint	 r) {
+	bigint number_of_digits = 0;
+
+	do {
+		number_of_digits = number_of_digits + 1;
+		r /= 10;
+	} while (r>0);
+	return number_of_digits; //determines length of a number
+}
