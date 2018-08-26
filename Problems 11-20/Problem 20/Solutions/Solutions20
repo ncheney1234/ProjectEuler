@@ -1,0 +1,48 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header20.h"
+using namespace std;
+bigint sumdigits(bigint r) {
+	bigint sum = 0;
+	while (r != 0)
+	{
+		sum = sum + r % 10;
+		r = r / 10;
+	}
+	return sum;  //return sum of digits
+}
+
+bigint factorial(bigint n)
+{
+	if (n <= 0) { return 1; }
+	bigint tot = 1;
+	bigint i;
+	for (i = 1; i <= n; i=i+1)
+	{
+		tot = tot * i;
+	}
+	return tot;
+}
+
+int main() {
+	unsigned t0 = clock();
+
+	std::cout << sumdigits(factorial(100)) << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
