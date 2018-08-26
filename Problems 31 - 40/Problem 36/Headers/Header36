@@ -1,0 +1,40 @@
+#pragma once
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+
+unsigned long long reverse(unsigned long long n) {
+	long long reversed = 0;
+	while (n > 0) {
+		reversed = 10 * reversed + n % 10;
+		n = n / 10;
+	}
+	return reversed;  //reverses digit order (ex: 1234 -> 4321
+}
+
+unsigned long long tobinary(long long n) {
+	long long r;
+	long long s = 0;
+	long long p = 1;
+	while (n > 0)
+	{
+		r = n % 2;
+		n /= 2;
+		r = p * r;
+		s += r;
+		p *= 10;
+	}
+	return s;
+}
