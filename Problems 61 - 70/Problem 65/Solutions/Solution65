@@ -1,0 +1,80 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header65.h"
+using namespace std;
+
+bigint sumdigits(bigint r) {
+	bigint sum = 0;
+	while (r != 0)
+	{
+		sum = sum + r % 10;
+		r = r / 10;
+	}
+	return sum;  //return sum of digits
+}
+
+
+int main() {
+	unsigned t0 = clock();
+
+	bigint a = 8; // 8/3
+	bigint b = 3;
+	bigint c = 11; // 11/4
+	bigint d = 4;
+	bigint f;
+	bigint g;
+	bigint h;
+	bigint j;
+	bigint p = 4;
+	int count = 2;
+	cout << a << "/" << b << endl;
+	cout << c << "/" << d << endl;
+
+	for (int i = 0; i < 96; i++) {
+		if (count % 3 == 0) {
+			f = a;
+			g = b;
+			h = c;
+			j = d;
+			c = p * c + a;
+			d = p * d + b;
+			a = h;
+			b = j;
+
+			p = p + 2;
+			
+		}
+		else {
+			f = a;
+			g = b;
+			h = c;
+			j = d;
+			c = c + a;
+			d = d + b;
+			a = h;
+			b = j;
+		}
+		
+		
+			count++;
+	}
+
+	std::cout << sumdigits(c) << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
