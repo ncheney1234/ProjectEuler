@@ -1,0 +1,54 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header71.h"
+using namespace std;
+#define ll long long
+
+int main() {
+	unsigned t0 = clock();
+
+double mindistance = 1;
+int numerator = 1;
+int denominator = 1;
+
+for (int d = 100000; d <= 999999; d++) {
+	for (int n = (3 * d / 7) - 10; 7 * n <= 3 * d; n++) {
+		if (gcd(n, d) == 1) {
+			double a = (double)n;
+			double b = (double)d;
+
+			if (a / b < .4285714285 && .4285714285 - a / b < mindistance) {
+
+
+
+				mindistance = .4285714285 - n / d;
+				numerator = n;
+				denominator = d;
+
+			}
+		}
+	}
+}
+
+cout << numerator << '/' << denominator << endl;
+
+
+std::cout << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
