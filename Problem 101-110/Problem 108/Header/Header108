@@ -1,0 +1,52 @@
+#pragma once
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+using namespace std;
+
+unsigned long long gcd(long long m, long long n)
+{
+	long long  r;
+
+	while (n != 0) {
+		r = m % n;
+		m = n;
+		n = r;
+	}
+	return m;
+}
+
+
+long long diophantinefractions(long long n) {
+	long long counter = 0;
+	long long a;
+	long long b;
+	try {
+		for (long long i = n + 1; i <= 2 * n; i++) {
+			a = n * i;
+			b = i - n;
+			
+			if (b==0) {
+				throw 99;
+			}
+			if (a%b == 0) { counter++; 
+			
+			}
+		}
+	}
+	catch (long long x) {
+		
+	}
+	return counter;
+}
