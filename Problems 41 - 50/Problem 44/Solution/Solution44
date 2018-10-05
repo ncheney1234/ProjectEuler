@@ -1,0 +1,52 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include <set>	
+
+int pentagonal(int n)
+{
+	return (n*(3 * n - 1)) / 2;
+}
+
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+	list<long long> trianglenumbers;
+	list<long long> trianglediff;
+	list<long long> trianglesum;
+	
+	long long numbers = 2500;
+
+	for (long long i = 1; i < numbers; i++) {
+
+		trianglenumbers.push_back(i*(3 * i - 1)/2);
+	}
+	cout << "list completed" << endl;
+
+	for (long long j = 1; j < numbers; j++) {
+		for (long long k = 1; k < j; k++) {
+			if (binary_search(trianglenumbers.begin(), trianglenumbers.end(), j*(3 * j - 1) / 2 + k * (3 * k - 1) / 2) && binary_search(trianglenumbers.begin(), trianglenumbers.end(), j*(3 * j - 1) / 2 - k * (3 * k - 1) / 2)) {
+				cout << "P_" << j << " + P_" << k << " = " << j * (3 * j - 1) / 2 + k * (3 * k - 1) / 2 << endl;
+			}
+		}
+	}
+
+
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
