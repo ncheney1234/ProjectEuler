@@ -1,0 +1,47 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+
+
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+	vector<long long> trianglenumbers;
+	vector<long long> Pentagonalnumbers;
+	vector<long long> hexagonalNumbers;
+
+	for (long long i = 285; i < 100000; i++) {
+		trianglenumbers.push_back(i * (i + 1) / 2);
+	}
+	for (long long i = 165; i < 100000; i++) {
+		Pentagonalnumbers.push_back(i * (3 * i - 1) / 2);
+	}
+
+	for (long long i = 143; i < 100000; i++) {
+		hexagonalNumbers.push_back(i * (2 * i - 1));
+	}
+	
+	for (vector<long long>::iterator a = trianglenumbers.begin(); a != trianglenumbers.end(); a++) {
+		if (binary_search(hexagonalNumbers.begin(), hexagonalNumbers.end(), *a)&& binary_search(Pentagonalnumbers.begin(), Pentagonalnumbers.end(), *a)) {
+			cout << *a << endl;
+		}
+	}
+
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
