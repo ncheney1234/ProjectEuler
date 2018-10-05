@@ -1,0 +1,86 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header74.h"
+using namespace std;
+
+
+int main() {
+	unsigned t0 = clock();
+	long long counter = 0;
+	long long countchain;
+	long long facsum;
+	long long digitsum;
+for (long i =3; i <1000000; i++) {
+
+	countchain = 1;
+	digitsum = 0;
+	vector<long long> mydigs = digits(i);
+	
+	while (true) {
+		
+		facsum = 0;
+		for (vector<long long>::iterator it = mydigs.begin(); it != mydigs.end(); ++it) {
+			facsum += factorial(*it);
+		}
+		
+		mydigs = digits(facsum);
+		
+		if (countchain > 60) { break; }
+		
+		if (facsum == 169 || facsum == 363601 || facsum == 1454) {
+			if (countchain == 57) {
+				cout << i << " -> " << countchain + 3 << " #: " << ++counter << endl;
+				
+			}
+			break;
+		}
+		
+		else if (facsum == 871 || facsum == 45361) {
+			if (countchain == 58) {
+				cout << i << " -> " << countchain + 2 << " #: " << counter++ << endl;
+				
+			}
+			break;
+		}
+	
+		else if (facsum == 872 || facsum == 45362) {
+			if (countchain == 58) {
+				cout << i << " -> " << countchain + 2 << " #: " << counter++ << endl;
+				
+			}
+			break;
+		}
+		
+		else if (facsum == 2 || facsum == 145) {
+			if (countchain == 59) {
+				cout << i << " -> " << countchain + 1 << " #: " << counter++ << endl;
+				
+			}
+			break;
+		}
+		
+		else {
+			countchain++;
+		}
+	}
+}
+
+std::cout << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
