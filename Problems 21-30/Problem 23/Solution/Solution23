@@ -1,0 +1,64 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header23.h"
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+	list <long long> abundant;
+	list <long long> abundantsum;
+	list <long long> nonabundant;
+	int count = 0;
+
+	for (long long r = 12; r <= 28123; r++) {
+		if (sumdiv(r) > r) {
+			abundant.push_back(r);
+		}
+	}
+	cout << "list completed" << endl;
+
+	for (list<long long>::iterator it = abundant.begin(); it != abundant.end(); ++it) {	
+		
+		for (list<long long>::iterator in = abundant.begin(); *in <= *it; ++in) {
+			if (*in + *it > 28123) { break; }
+			abundantsum.push_back(*it + *in);
+		}
+	}
+
+	cout << "new list completed" << endl;
+
+	abundantsum.sort();
+	cout << "sort complete" << endl;
+	abundantsum.unique();
+	cout << "removed duplicates" << endl;
+
+
+	for (long long i = 1; i < 28123; i++) {
+		if (!binary_search(abundantsum.begin(), abundantsum.end(), i)) {
+			count += i;
+		}
+	}
+
+	cout << count << endl;
+
+
+
+	std::cout << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
