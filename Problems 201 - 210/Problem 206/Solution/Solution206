@@ -1,0 +1,49 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header206.h"
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+
+
+	// n is between 1,010,101,010 and 1,389,026,624
+	unsigned long long a = 1389026624;
+	unsigned long long b = 1010100000;
+	unsigned long long c;
+	unsigned long long d;
+	unsigned long long e = 8;
+
+	for (unsigned long long i = b; i <= a; i += 100) {
+		c = (i - 30)*(i - 30);
+		d = (i + 30)*(i + 30);
+		
+
+		if (nth_digit(c, 5) == e && nth_digit(c, 7) == e-1 && nth_digit(c, 9) == e-2 && nth_digit(c, 11) == e-3 && nth_digit(c, 13) == e-4 && nth_digit(c, 15) == e-5 && nth_digit(c, 17) == e-6) {
+			cout << i - 30 << endl;
+		}
+		else if (nth_digit(d, 5) == e && nth_digit(d, 7) == e-1 && nth_digit(d, 9) == e-2 && nth_digit(d, 11) == e-3 && nth_digit(d, 13) == e-4 && nth_digit(d, 15) == e-5 && nth_digit(d, 17) == e-6) {
+			cout << i + 30 << endl;
+		}
+	}
+
+	
+	std::cout << nth_digit(a*a,17) << endl;
+	unsigned elapsed = clock() - t0;
+	std::cout << "Elapsed time: " << elapsed << endl;
+	std::system("pause");
+	return 0;
+
+}
