@@ -1,0 +1,41 @@
+#include <iostream>
+#include <list>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <deque>
+#include <ctime>
+#include <cstring>
+#include <cstdlib>
+#include <map>
+#include "Header108.h"
+using namespace std;
+
+int main() {
+	unsigned t0 = clock();
+
+	long long mostsolutions = 0;
+	long long number = 10000;
+	while(true) {
+		if (diophantinefractions(number) > mostsolutions) {
+			mostsolutions = diophantinefractions(number);
+			cout << mostsolutions << " -> " << number << endl;
+		}
+		if (mostsolutions > 1000) {
+			cout << number << endl;
+			break;
+		}
+		number++;
+	}
+
+std::cout << diophantinefractions(4) << endl;
+unsigned elapsed = clock() - t0;
+std::cout << "Elapsed time: " << elapsed << endl;
+std::system("pause");
+return 0;
+
+}
